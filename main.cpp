@@ -2,7 +2,7 @@
 #include<string>
 #include<queue>
 using namespace std;
-class order;
+class order{
  public:
     int tokenId;
     string itemType;
@@ -29,5 +29,31 @@ class QueueManager {
                 cout<< "Invalid order type.\n";
             }
             }
+        void processOrder(const string& counterType){
+            if(counterType =="beverage"){
+                if(beverageQueue.empty()){
+                    cout<<"no orders at the beverage counter to process.\n";
+                }
+                else{
+                    order current  = beverageQueue.front();
+                    beverageQueue.pop();
+                    cout<<"processing Beverage order ID "<< current.tokenID<< << " (Payment: " << current.paymentType << ").\n";
+
+                }
+            } else if (counterType == "Lunch") {
+                if (lunchQueue.empty()) {
+                    cout << "No orders at the Lunch Counter to process.\n";
+                    
+                } else {
+                    Order current = lunchQueue.front();
+                    lunchQueue.pop();
+                    cout << "Processing Lunch Order ID " << current.orderID << " (Payment: " << current.paymentType << ").\n";
+                }
+            } else {
+                cout << "Invalid counter type.\n";
+            }
         }
-}
+     }
+        }
+
+        }
